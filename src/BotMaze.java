@@ -75,8 +75,8 @@ public class BotMaze {
 			int exam = sol.examine();
 			if (exam == PartialSolution.ACCEPT) {
 				sol.maze.setPosition(0, 0, ESCP);
-				sol.maze.save();
 				System.out.println(sol);
+				sol.maze.save();
 			} else if (exam == PartialSolution.CONTINUE) {
 				for (PartialSolution p : sol.extend()) {
 					sol.mark();
