@@ -47,7 +47,7 @@ public class BotMaze {
 		}
 
 		/**
-		 * EXERCICE 1 Examines a partial solution. In this function you must identify
+		 * EXERCISE 1 Examines a partial solution. In this function you must identify
 		 * the three different possibility where the given position (x,y) could have, it
 		 * means; WALL, PATH or EXIT and
 		 * 
@@ -59,7 +59,7 @@ public class BotMaze {
 		}
 
 		/**
-		 * EXERCICE 2 Yields all extensions of this partial solution. To keep walking
+		 * EXERCISE 2 Yields all extensions of this partial solution. To keep walking
 		 * through the maze, you must to go right, left, up or down to span a new
 		 * partial solution.
 		 * 

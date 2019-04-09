@@ -21,7 +21,7 @@ public class PascalTriangle {
 		}
 	}
 
-	/* EXERCICE 
+	/* EXERCISE 
 	 *  implement the recursive function to determine the value in each 
 	 *  of the position of the triangle. 
 	 *  verify the formula given in the Laboratory

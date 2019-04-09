@@ -29,7 +29,7 @@ public class EuclidMethod {
 	}
 	
 	/*
-	 * EXERCICE 
+	 * EXERCISE 
 	 * remember that If p > q, the gcd of p and q is the same as the gcd of q and p % q.
 	 * (%) mean module. 
 	 * */
