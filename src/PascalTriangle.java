@@ -27,11 +27,8 @@ public class PascalTriangle {
 	 *  verify the formula given in the Laboratory
 	 * */
 	public static int pascal(int i, int j) {
-		//Write boundary conditions
-		
-		//Write step function
-		
-		return 0; //Dummy Return
+		if((j == 0 && i >= 0)|| (i >= 0 && j == i)) return 1;
+		return pascal(i - 1, j - 1) + pascal(i -1, j);
 	}
 
 	public static void main(String[] args) {

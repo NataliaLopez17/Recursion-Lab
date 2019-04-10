@@ -38,8 +38,10 @@ public class BotMaze {
 		 * @return one of ACCEPT, ABANDON, CONTINUE
 		 */
 		public int examine() {
-			// Add your code here.
-			return 0; // Dummy Return
+			if (this.maze.getPosition(posX, posY) == WALL)return ABANDON;
+			if (this.maze.getPosition(posX, posY) == PATH) return ABANDON;
+			if (this.maze.getPosition(posX, posY) == EXIT) return ACCEPT;
+			return CONTINUE; 
 		}
 
 		/**
@@ -47,11 +49,12 @@ public class BotMaze {
 		 * through the maze, you must to go right, left, up or down to span a new
 		 * partial solution.
 		 * 
-		 * @return an array of PartialSolution that extend this solution (remember the 4
+		 * @return an array of PartialSolution that extends this solution (remember the 4
 		 *         different position).
 		 */
 		public PartialSolution[] extend() {
-			// Add your code here.
+			PartialSolution[] solution = new PartialSolution[4];
+			
 			return null; // Dummy Return
 		}
 		

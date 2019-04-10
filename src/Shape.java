@@ -73,10 +73,11 @@ public class Shape extends JComponent {
 		double newWidth = width * 0.5;
 		double newHeight = height * 0.5;
 
-		shape(n - 1, x - (newWidth / 2), y - (newHeight / 2), newWidth, newHeight);
-
-		// Add your code here.
-
+		shape(n - 1, x - (newWidth/2), y - (newHeight / 2), newWidth, newHeight);
+		shape(n - 1, x + (newWidth) + newWidth/2, y - newHeight/2, newWidth, newHeight);
+		shape(n - 1, x - (newWidth)/2, y + (newHeight) + newHeight/2, newHeight, newHeight);
+		shape(n - 1, x + (newWidth) + newWidth/2, y + (newHeight)+ newHeight/2, newHeight, newHeight);
+		
 	}
 
 }

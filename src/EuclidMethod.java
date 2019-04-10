@@ -36,9 +36,7 @@ public class EuclidMethod {
 	public static int gcd(int p, int q) {
 		arr.add(tabs+"gcd("+p+", "+q+")");
 		tabs+="   ";
-		//Write boundary conditions
-
-		//Write step function
-		return 0; //Dummy return
+		if (q == 0) return p;
+		return gcd(q, p%q); //Dummy return
 	}
 }
