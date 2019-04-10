@@ -13,19 +13,15 @@ public class BotMaze {
 		public static final int ABANDON = 2;
 		public static final int CONTINUE = 3;
 
-		public static final int RIGHT = 4;
-		public static final int LEFT = 5;
-		public static final int UP = 6;
-		public static final int DOWN = 7;
-
 		private int posX;
 		private int posY;
 		private Maze maze;
 
 		/**
-		 * Constructs a partial solution of a given size.
+		 * Constructs a partial solution of a given position and Maze.
 		 * 
-		 * @param start The start position
+		 * @param posX  The x position in the maze
+		 * @param posY  The y position in the maze
 		 * @param maze  The Maze
 		 */
 		public PartialSolution(int posX, int posY, Maze maze) {
@@ -34,22 +30,10 @@ public class BotMaze {
 			this.maze = maze;
 		}
 
-		public void free() {
-			if (this.maze.getPosition(this.posX, this.posY) == PATH) {
-				this.maze.setPosition(this.posX, this.posY, FREE);
-			}
-		}
-
-		public void mark() {
-			if (this.maze.getPosition(this.posX, this.posY) == FREE) {
-				this.maze.setPosition(this.posX, this.posY, PATH);
-			}
-		}
-
 		/**
 		 * EXERCISE 1 Examines a partial solution. In this function you must identify
 		 * the three different possibility where the given position (x,y) could have, it
-		 * means; WALL, PATH or EXIT and
+		 * means; WALL, PATH or EXIT and determine whether to ACCEPT, ABANDON, CONTINUE.
 		 * 
 		 * @return one of ACCEPT, ABANDON, CONTINUE
 		 */
@@ -70,13 +54,20 @@ public class BotMaze {
 			// Add your code here.
 			return null; // Dummy Return
 		}
+		
 
+		/**
+		 * The method is a straightforward translation of the pseudocode 
+		 * for backtracking. Note how there is nothing specific about 
+		 * the maze problem in this method, it works for any 
+		 * partial solution with an examine and extend method
+		 * 
+		 * @param sol a Partial Solution
+		 */
 		public static void solve(PartialSolution sol) {
 			int exam = sol.examine();
 			if (exam == PartialSolution.ACCEPT) {
-				sol.maze.setPosition(0, 0, ESCP);
-				System.out.println(sol);
-				sol.maze.save();
+				sol.save();
 			} else if (exam == PartialSolution.CONTINUE) {
 				for (PartialSolution p : sol.extend()) {
 					sol.mark();
@@ -87,11 +78,42 @@ public class BotMaze {
 
 		}
 
+		/**
+		 * Unmark the partial solution in the maze
+		 */
+		public void free() {
+			if (this.maze.getPosition(this.posX, this.posY) == PATH) {
+				this.maze.setPosition(this.posX, this.posY, FREE);
+			}
+		}
+
+		/**
+		 * Mark the partial solution in the maze
+		 */
+		public void mark() {
+			if (this.maze.getPosition(this.posX, this.posY) == FREE) {
+				this.maze.setPosition(this.posX, this.posY, PATH);
+			}
+		}
+		
+		/**
+		 * Save the actual state in the maze and print this
+		 */
+		public void save() {
+			System.out.println(toString());
+			this.maze.setPosition(0, 0, ESCP);
+			this.maze.save();
+		}
+
 		public String toString() {
 			return this.maze.toString();
 		}
 	}
 
+	/**
+	 * A Maze in the Maze Problem
+	 *
+	 */
 	public static class Maze {
 		private int numrow;
 		private int numcolumn;
@@ -137,9 +159,9 @@ public class BotMaze {
 
 		public String toString() {
 			String output = "";
-			for (int i = 0; i < this.numrow; i++) {
-				for (int j = 0; j < this.numcolumn; j++) {
-					output += maze[j + i * this.numcolumn] + " ";
+			for (int x = 0; x < this.numrow; x++) {
+				for (int y = 0; y < this.numcolumn; y++) {
+					output += maze[y + x * this.numcolumn] + " ";
 				}
 				output += "\n";
 			}
