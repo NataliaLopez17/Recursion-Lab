@@ -100,7 +100,7 @@ public class BotMaze {
 		 * Save the actual state in the maze and print this
 		 */
 		public void save() {
-			System.out.println(toString());
+			// System.out.println(toString());
 			this.maze.setPosition(0, 0, ESCP);
 			this.maze.save();
 		}
