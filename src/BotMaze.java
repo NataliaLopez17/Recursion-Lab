@@ -54,8 +54,16 @@ public class BotMaze {
 		 */
 		public PartialSolution[] extend() {
 			PartialSolution[] solution = new PartialSolution[4];
+			PartialSolution right = new PartialSolution(posX + 1, posY, maze);
+			PartialSolution left = new PartialSolution(posX - 1, posY, maze);
+			PartialSolution up = new PartialSolution(posX, posY - 1, maze);
+			PartialSolution down = new PartialSolution(posX, posY + 1, maze);
 			
-			return null; // Dummy Return
+			solution[0] = right;
+			solution[1] = left;
+			solution[2] = up;
+			solution[3] = down;
+			return solution; // Dummy Return
 		}
 		
 
